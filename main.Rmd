@@ -1,0 +1,198 @@
+---
+title: "dbt Sharpens Data Science"
+author: "Alex Abraham"
+date: "2023-08-16"
+output: 
+  xaringan::moon_reader:
+    css: [default, tamu, tamu-fonts]
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+# What does dbt mean to me?
+
+- **Standardized** philosophy and tooling for data transformations
+
+- "Philosophy": ideas from public writings
+  - Transformation workflow as _layers_
+  - Overlying conventions for implementation, style
+  - Sources:
+      - [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md)
+      - [best practices document](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+
+---
+
+class: inverse, center, middle
+
+# `dbt` philosophy and tools sharpen data science practice.
+
+---
+
+# What do you mean by dbt "philosophy"?
+
+This is `normconf`-type stuff!
+
+I wish this had been required reading, before onboarding with
+first company where I used dbt!
+
+---
+
+# Why should a data scientist study and use dbt?
+
+- Most any data scientist will need to roll their own data transformations
+  - That's preferable for better outcomes, anyway
+
+- Without awareness of delineation between data engineering and data science,
+might tangle the two practices together
+
+- Result: workflows that are hard to test, collaborate on, maintain, extend
+  - whose components are not modular nor orthogonal
+  
+Philosophy/principles help whether using dbt or a Jupyter notebook.
+
+---
+
+class: inverse, center, middle
+
+# `dbt` philosophy, to this data scientist
+
+---
+
+# A Transformations Flow Really Can be Standardized
+
+What is a transformations flow? "a cohesive arc moving data from
+'source-conformed' to 'business-conformed'"
+
+"stacking our transformation in optimized, modular layers means
+we can apply each transformation in only one place"
+
+---
+
+# A Transformations Flow Consists of Standard Layers
+
+- Staging: atomic building blocks
+- Intermediate: transformation steps
+- Marts: business-meaningful entities
+
+---
+
+# A Standard Layer Has Well-Defined Properties
+
+- Folders structure
+- File names
+- Typical objectives (operations)
+
+---
+
+# Staging Layer
+
+- Folders structure
+  - One subdirectory per _source system_ (examples: Stripe, transactions database, etc)
+
+- File names
+
+- Typical objectives (operations)
+
+---
+
+# Intermediate Layer
+
+- Folders structure
+
+- File names
+
+- Typical objectives (operations)
+
+---
+
+# Mart Layer
+
+- Folders structure
+
+- File names
+
+- Typical objectives (operations)
+
+---
+
+# Miscellaneous insights
+
+- Development Flow
+
+- "It's easy for anybody to quickly understand what's happening in that model, 
+even if they don't know SQL"
+
+- Don't over-optimize too early!
+
+---
+
+# Standardized Table/Model Naming
+
+- `<dag_stage>`_`<source/topic>`_`<additional_context>`
+  - snake_case
+  - plural objects
+  
+- Name with the onboarding team member or business stakeholder in mind!
+  - Limit abbreviations
+  - Language that's business-meaningful, not data source jargon
+  - _Art of Readable Code_ -- time-to-understanding as key measure of name quality
+  
+- Booleans prefix with `is_` or `has_`
+
+---
+
+# Code Readability is a Primary Objective
+
+- Do not optimize query for fewer lines of code
+  - _Art of Readable Code_
+  
+- Leverage CTE early and often
+  - Import-type
+  - Logical-type
+  
+---
+
+# Why Structure Matters?
+
+---
+
+# Test-Driven Data Transformation
+
+- At minimum, unique and not-null tests necessary for every model
+  - Drives immediately quality assurance/improvement in DS work
+  - Might even write this test first -- again, whether in dbt setup
+  or Jupyter nb
+
+---
+
+class: inverse, center, middle
+
+# `dbt` tooling, to this data scientist
+
+---
+
+# Key dimensions
+
+- Well-encapsulated API
+  - dbt build
+    - Aligned with _Unit Testing_ -- single command accomplishes objective
+    
+- Low-visual noise interfaces for configuration
+  - yaml files
+  
+- dbt docs
+  
+---
+
+# Tooling Becomes Inspiration for Other Work
+
+- Configs for data visualization (snapshot)
+- Configs for model-flow (snapshot, link)
+
+---
+
+# Product Concept Where dbt Plays Integral Role
