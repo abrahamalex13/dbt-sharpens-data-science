@@ -214,6 +214,7 @@ class: inverse, center, middle
 
 - Well-encapsulated API: one command line statement accomplishes goal
   - `dbt build`
+      - Cutting through the ("pipeline jungle")[https://www.youtube.com/watch?v=sr3_DQ-RhTc] risk?
   - `dbt docs generate`
   - `dbt docs serve`
     
