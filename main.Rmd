@@ -165,76 +165,64 @@ we can apply each transformation in only one place"**
 
 ---
 
-# Miscellaneous insights
-
-- Development Flow
-
-- "It's easy for anybody to quickly understand what's happening in that model, 
-even if they don't know SQL"
-
-- Don't over-optimize too early!
-
----
-
-# Standardized Table/Model Naming
-
-- `<dag_stage>`_`<source/topic>`_`<additional_context>`
-  - snake_case
-  - plural objects
-  
-- Name with the onboarding team member or business stakeholder in mind!
-  - Limit abbreviations
-  - Language that's business-meaningful, not data source jargon
-  - _Art of Readable Code_ -- time-to-understanding as key measure of name quality
-  
-- Booleans prefix with `is_` or `has_`
-
----
-
-# Code Readability is a Primary Objective
-
-- Do not optimize query for fewer lines of code
-  - _Art of Readable Code_
-  
-- Leverage CTE early and often
-  - Import-type
-  - Logical-type
-  
----
-
-# Why Structure Matters?
-
----
-
 # Test-Driven Data Transformation
 
-- At minimum, unique and not-null tests necessary for every model
-  - Drives immediately quality assurance/improvement in DS work
-  - Might even write this test first -- again, whether in dbt setup
-  or Jupyter nb
+- At least `unique` and `not_null` tests, for every model
+  - How else to be confident that, a revision maintains existing functionality?
 
+- Might write tests first, a la Test-Driven Development 
+
+- Broadly applicable practice, whether in dbt project or Jupyter notebook
+
+---
+
+# Code Readability is an Objective to Optimize
+
+- "**DO NOT OPTIMIZE FOR FEWER LINES OF CODE**"
+  - Again, _Art of Readable Code_
+  
+- Leverage CTE early and often
+  - Import-type (a la Python package imports)
+  - Logical-type (break down complexity)
+  
+---
+
+# We Can Bring Order to Naming, Broadly
+
+- Already covered table names
+
+- `snake_case` for schema, table, and column naming
+
+- Full name > domain-specific abbreviation
+  - Consider onboarding employee
+  - "Code should be written to minimize the time it would take
+  for someone else to understand it" (_Art of Readable Code_)
+
+- Timestamp columns `<event>_at`, date columns `<event>_date`
+
+- True/false columns `is_<condition>`
+  
 ---
 
 class: inverse, center, middle
 
-# `dbt` tooling, to this data scientist
+# dbt tooling, to this data scientist
 
 ---
 
-# Key dimensions
+# Interface Simplicity is Exemplary 
 
-- Well-encapsulated API
-  - dbt build
-    - Aligned with _Unit Testing_ -- single command accomplishes objective
+- Well-encapsulated API: one command line statement accomplishes goal
+  - `dbt build`
+  - `dbt docs generate`
+  - `dbt docs serve`
     
 - Low-visual noise interfaces for configuration
   - yaml files
   
-- dbt docs
-  
 ---
 
-# Tooling Becomes Inspiration for Other Work
+# Tooling Inspires New Work
 
 - Configs for data visualization (snapshot)
 - Configs for model-flow (snapshot, link)
