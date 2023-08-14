@@ -6,116 +6,162 @@ output:
   xaringan::moon_reader:
     css: [default, tamu, tamu-fonts]
     self_contained: true
+    nature:
+      beforeInit: "https://platform.twitter.com/widgets.js"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
----
-# What does dbt mean to me?
+# dbt Resolves Data Chaos, Through Standards
 
-- **Standardized** philosophy and tooling for data transformations
+- Data transformation: "a cohesive arc moving data from _source-conformed_ to _business-conformed_ " (`dbt` blog)
 
-- "Philosophy": ideas from public writings
-  - Transformation workflow as _layers_
-  - Overlying conventions for implementation, style
-  - Sources:
-      - [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md)
-      - [best practices document](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- Data have idiosyncrasies, so transformations easily adopt adhoc designs
 
----
+  - Adhoc designs cost high cognitive load in maintenance, collaboration ...
+  - 2x trouble if that design is not your payload ("load that pays")
+  - Design standards will cost time
 
-class: inverse, center, middle
+- Standards save cognitive load, for spending elsewhere (direct-to-payload)  
 
-# `dbt` philosophy and tools sharpen data science practice.
+- dbt standardizes the data transformation workflow, overcoming challenges
+  - [historically](https://www.getdbt.com/blog/it-s-time-for-open-source-analytics/) 
+  - currently
 
 ---
 
-# What do you mean by dbt "philosophy"?
+# dbt Standardizes Tooling, and also Philosophy
 
-This is `normconf`-type stuff!
+- dbt Core tool is incredible
+  - `dbt build` -- 'nuff said.
 
-I wish this had been required reading, before onboarding with
-first company where I used dbt!
-
----
-
-# Why should a data scientist study and use dbt?
-
-- Most any data scientist will need to roll their own data transformations
-  - That's preferable for better outcomes, anyway
-
-- Without awareness of delineation between data engineering and data science,
-might tangle the two practices together
-
-- Result: workflows that are hard to test, collaborate on, maintain, extend
-  - whose components are not modular nor orthogonal
+- dbt blog shares the "real secrets" (principles, "philosophy"):
+  - How to clearly structure a complex data project
+  - How to unlock tool's full potential -- should be required reading!
   
-Philosophy/principles help whether using dbt or a Jupyter notebook.
+- In my Data Science experience:
+  - I will compose data transformations (that's [good](https://multithreaded.stitchfix.com/blog/2016/03/16/engineers-shouldnt-write-etl/))
+  - Non-standard workflows are hard to maintain and extend
+      - Does design enforce, modular & orthogonal components? 
+      - For new reader, or your future self, what's time-to-understanding (_Art of Readable Code_)?
 
 ---
 
 class: inverse, center, middle
 
-# `dbt` philosophy, to this data scientist
+# dbt philosophy and tools sharpen data science practice.
 
 ---
 
-# A Transformations Flow Really Can be Standardized
+# Philosophy: Standard Workflow Layers, Details 
 
-What is a transformations flow? "a cohesive arc moving data from
-'source-conformed' to 'business-conformed'"
+- Philosophy articulates,
+  - Transformation workflow as standard _layers_
+  - Overarching conventions for implementation, style
 
-"stacking our transformation in optimized, modular layers means
-we can apply each transformation in only one place"
+- Reminds of [normconf](https://normconf.com/) content
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Gonna start a conference called <a href="https://twitter.com/hashtag/NormIPS?src=hash&amp;ref_src=twsrc%5Etfw">#NormIPS</a> that’s just presentations of middlebrow ML topics. “how to structure Python packages 2022”, “how many k-folds is too many”, “how to make the browser pop-up come up when the notebook is done running”, “putting features in Postgres”, etc.</p>&mdash; Vicki (@vboykis) <a href="https://twitter.com/vboykis/status/1552066833582276610?ref_src=twsrc%5Etfw">July 26, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+- Sources: [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), [best practices document](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 
 ---
 
-# A Transformations Flow Consists of Standard Layers
+# Standard Layers Structure a Workflow
+
+- **"Stacking our transformation in optimized, modular layers means
+we can apply each transformation in only one place"**
+  - Remarkable -- contrast to decision burden in adhoc approaches
 
 - Staging: atomic building blocks
+
 - Intermediate: transformation steps
+
 - Marts: business-meaningful entities
 
----
-
-# A Standard Layer Has Well-Defined Properties
-
-- Folders structure
-- File names
-- Typical objectives (operations)
+- Probably not your workflow version 1
+  - "With a functioning model flowing in dbt, 
+  we can start refactoring and optimizing that mart."
+  - Add this complexity as necessary!
 
 ---
 
-# Staging Layer
+# A Few Properties Tell a Layer's Story
 
-- Folders structure
-  - One subdirectory per _source system_ (examples: Stripe, transactions database, etc)
+- Folder structure
+  - "Folder structure is also one of the key interfaces
+  for understanding the knowledge graph encoded in our project [...]
+  It should reflect how the data flows, step-by-step,
+  from a wide variety of source-conformed models into 
+  fewer, richer business-conformed models."
 
 - File names
+  - "By descriptively labeling the transformations happening [within model ...],
+  even a stakeholder who doesn't know SQL would be able to grasp 
+  the purpose of this section"
 
-- Typical objectives (operations)
+- Typical operations
+  - Manage complexity by breaking out small steps
 
 ---
 
-# Intermediate Layer
+# Staging Layer: Atomic Building Blocks
 
-- Folders structure
+- Folder structure
+  - One subdirectory per source system (Stripe, transactions database, etc)
 
 - File names
+  - Layer, source system, entity (plural): `stg_[source]__[entity]s.sql`
 
-- Typical objectives (operations)
+- Typical operations
+  - Rename
+  - Change data types
+  - Univariate transforms
+      - Converting units
+      - Discretizing/bucketizing
+  - NOT joins (layer not dedicated for integrations)
+  - NOT aggregations
 
 ---
 
-# Mart Layer
+# Intermediate Layer: Transformation Steps
 
-- Folders structure
+- Folder structure
+  - One subdirectory per business area (finance, marketing, etc)
 
 - File names
+  - Layer, entity (plural), transform action: `int_[entity]s_[verb]s.sql`
+  - Emphasize business-conformed concept over source system
+  - "easy for **anybody** to quickly understand 
+  what's happening in that model"
 
-- Typical objectives (operations)
+- Typical operations
+  - Change of data grain
+      - Table pivot
+      - Aggregations
+      - Joins
+
+---
+
+# Mart Layer: Business-Meaningful Entities
+
+- Folder structure
+  - One subdirectory per business area (finance, marketing, etc)
+  - Not to encourage, same concept calculated differently per team
+      - Good: `tax_revenue`, `revenue`
+      - Not good: `finance_revenue`, `marketing_revenue`
+
+- File names
+  - Entity: `[entity]s.sql`
+  - "for pure marts, there should not be a time dimension [...]
+  typically best captured via metrics"
+
+- Typical operations
+  - Joins
+  - Wide array of calculations -- though limited count
+      - Many calculations imply, opportunity for upstream move
 
 ---
 
