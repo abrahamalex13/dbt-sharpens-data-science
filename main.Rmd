@@ -1,6 +1,6 @@
 ---
 title: "dbt Sharpens Data Science"
-author: "Alex Abraham"
+author: "Alex Abraham<br>alextabraham.com"
 date: "2023-08-16"
 output: 
   xaringan::moon_reader:
@@ -214,7 +214,7 @@ class: inverse, center, middle
 
 - Well-encapsulated API: one command line statement accomplishes goal
   - `dbt build`
-      - Cutting through the ("pipeline jungle")[https://www.youtube.com/watch?v=sr3_DQ-RhTc] risk?
+      - Specific to machine learning: resist ["pipeline jungle"](https://www.youtube.com/watch?v=sr3_DQ-RhTc)
   - `dbt docs generate`
   - `dbt docs serve`
     
@@ -223,11 +223,85 @@ class: inverse, center, middle
   
 ---
 
-# Tooling Inspires New Work
+# dbt Inspires More SWE in Analytics
 
-- Configs for data visualization (snapshot)
-- Configs for model-flow (snapshot, link)
+- dbt emphasizes _connection_ of data analytics, software engineering
+
+- This connection should revolutionize more of analytics!
+
+- Some examples from my work...
 
 ---
 
-# Product Concept Where dbt Plays Integral Role
+# Motivate One Workflow for ML Feature Transforms 
+
+- Business stakeholders and data practitioners often unhappy with 
+cost of reaching baseline predictive model
+  - Even with analyst-friendly data in hand
+  
+- Analyst-friendly data need transformed to model-ready features
+  - _Feature transform workflow/pipeline_
+  
+- Workflow rewrites common between or within- projects
+
+---
+
+# model-flow: One Workflow for ML Feature Transforms 
+
+- **Solution: de-couple standard (a) operations, (b) project-specific configuration**
+
+.center[![An ML system standardizes by de-coupling.](images/ml_systems_complexity_modular.png)]
+
+SOURCE: [Hidden Technical Debt in Machine Learning Systems](https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
+
+---
+
+# model-flow Usage
+
+- Compose a few fun-to-read configuration files
+  - "What data are used in this analysis?"
+  - "What transformation steps yield model-ready data?"
+
+- Get model-ready data with a command line statement:
+
+.center[
+```python -m src.features.main```
+]
+
+- Transformed data could pass to many possible models
+
+- For more details, 
+  - My [blog](https://alextabraham.com/post/2023-08-10-improvingtimetomodelfeaturetransforms/)
+  - My [GitHub repo](https://github.com/abrahamalex13/model-flow)
+
+---
+
+# Data Opportunities Abound Outside Formal Tech
+
+- Consider a conventionally anecdotal marketplace
+  - Our example: baseball cards
+  
+- Expect high friction in asset valuation precedent
+  - time-intensive, 
+  - hard-to-scale,
+  - inaccurate
+
+- With the internet, relevant data abound -- just needs wrangled!
+  
+- With our data and predictive models, we 
+  - Save sellers time spent during listing process,
+  - Inform buyers about fundamental value drivers (performance _and_ card details) 
+
+- We're building in public, [@SchoolhouseData](https://twitter.com/SchoolhouseData) 
+
+---
+
+class: inverse, center, middle
+
+# dbt philosophy and tools sharpen data science practice.
+
+---
+
+class: inverse, center, middle
+
+## Alex Abraham<br>alextabraham.com<br>@SchoolhouseData
