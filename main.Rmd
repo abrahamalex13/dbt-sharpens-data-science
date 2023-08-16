@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Data transformation: "a cohesive arc moving data from _source-conformed_ to _business-conformed_ " (`dbt` blog)
 
-- Data have idiosyncrasies, so transformations might adopt adhoc designs
+- Data have idiosyncrasies, so transformations might adopt ad hoc designs
 
-  - Adhoc designs are expensive: for maintenance, collaboration, ...
+  - Ad hoc designs are expensive: for maintenance, collaboration, ...
   - 2x trouble if that design isn't your payload ("load that pays")
   - Design standards cost upfront time, certainly
 
@@ -71,7 +71,7 @@ class: inverse, center, middle
 
 - **"Stacking our transformation in optimized, modular layers means
 we can apply each transformation in only one place"**
-  - Remarkable -- contrast to decision burden with adhoc approach
+  - Remarkable -- contrast to decision burden with ad hoc approach
 
 - Staging: atomic building blocks
 
