@@ -69,7 +69,7 @@ class: inverse, center, middle
 
 # Standard Layers Structure a Workflow
 
-- **"Stacking our transformation in optimized, modular layers means
+- **"Stacking our transformations in optimized, modular layers means
 we can apply each transformation in only one place"**
   - Remarkable -- contrast to decision burden with ad hoc approach
 
