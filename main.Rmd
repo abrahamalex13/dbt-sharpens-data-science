@@ -294,9 +294,11 @@ SOURCE: [Hidden Technical Debt in Machine Learning Systems](https://proceedings.
 
 # Kyle Tucker's Batting Gloves?
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Did Kyle Tucker reignite his 2023 with mid-June batting gloves? We can see why he &quot;downplays their importance.&quot;<br><br>His season started trending up late May/early June, before gloves (chart).<br><br>Fun article from <a href="https://twitter.com/TheAthleticMLB?ref_src=twsrc%5Etfw">@TheAthleticMLB</a>!<a href="https://twitter.com/hashtag/Astros?src=hash&amp;ref_src=twsrc%5Etfw">#Astros</a> <a href="https://twitter.com/hashtag/LevelUp?src=hash&amp;ref_src=twsrc%5Etfw">#LevelUp</a> <a href="https://twitter.com/hashtag/mlb?src=hash&amp;ref_src=twsrc%5Etfw">#mlb</a> <a href="https://twitter.com/hashtag/baseball?src=hash&amp;ref_src=twsrc%5Etfw">#baseball</a> <a href="https://twitter.com/hashtag/data?src=hash&amp;ref_src=twsrc%5Etfw">#data</a> <a href="https://t.co/fI13vWPB9f">https://t.co/fI13vWPB9f</a> <a href="https://t.co/v1BgtAGxBD">pic.twitter.com/v1BgtAGxBD</a></p>&mdash; Schoolhouse Data (@SchoolhouseData) <a href="https://twitter.com/SchoolhouseData/status/1691242129865986049?ref_src=twsrc%5Etfw">August 15, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+```{r echo=FALSE, out.height='450px', out.width='450px', fig.align='center'}
+knitr::include_graphics("images/king_tuck.png")
+```
 
-- We're [@SchoolhouseData](https://twitter.com/SchoolhouseData) 
+We yammer as [@SchoolhouseData](https://twitter.com/SchoolhouseData)
 
 ---
 
