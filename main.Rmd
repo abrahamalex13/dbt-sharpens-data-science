@@ -18,13 +18,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Data transformation: "a cohesive arc moving data from _source-conformed_ to _business-conformed_ " (`dbt` blog)
 
-- Data have idiosyncrasies, so transformations easily adopt adhoc designs
+- Data have idiosyncrasies, so transformations might adopt adhoc designs
 
-  - Adhoc designs are costly to maintenance, collaborate on ...
+  - Adhoc designs are expensive: for maintenance, collaboration, ...
   - 2x trouble if that design isn't your payload ("load that pays")
-  - To be sure, design standards cost upfront time
+  - Design standards cost upfront time, certainly
 
-- Standards save cognitive load, for spending on payload  
+- Standards save cognitive load, for better uses!
 
 - dbt standardizes the data transformation workflow, overcoming challenges
   - [historically](https://www.getdbt.com/blog/it-s-time-for-open-source-analytics/) 
@@ -37,15 +37,15 @@ knitr::opts_chunk$set(echo = TRUE)
 - dbt Core tool is incredible
   - `dbt build` -- 'nuff said.
 
-- dbt blog shares the "real secrets" (principles, "philosophy"):
+- dbt blog shares secret sauce (principles, "philosophy"):
   - How to clearly structure a complex data project
-  - How to unlock tool's full potential -- should be required reading!
+  - How to unlock tool's full potential (_required reading_)
   
 - In my Data Science experience:
   - I will compose data transformations (that's [good](https://multithreaded.stitchfix.com/blog/2016/03/16/engineers-shouldnt-write-etl/))
-  - Non-standard workflows are hard to maintain, extend
-      - Does design enforce, modular & orthogonal components? 
-      - For new reader (or future self), what's time-to-understanding?
+  - Non-standard workflows hard to maintain, extend
+      - Are components modular & orthogonal? 
+      - Time-to-understanding, for new reader or future self?
 
 ---
 
@@ -71,7 +71,7 @@ class: inverse, center, middle
 
 - **"Stacking our transformation in optimized, modular layers means
 we can apply each transformation in only one place"**
-  - Remarkable -- contrast to decision burden in adhoc approaches
+  - Remarkable -- contrast to decision burden with adhoc approach
 
 - Staging: atomic building blocks
 
@@ -147,7 +147,7 @@ we can apply each transformation in only one place"**
 
 - Folder structure
   - One subdirectory per business area (finance, marketing, etc)
-  - Not to encourage, same concept calculated differently per team
+  - Still label calculation by _concept_, not team
       - Good: `tax_revenue`, `revenue`
       - Not good: `finance_revenue`, `marketing_revenue`
 
@@ -165,12 +165,12 @@ we can apply each transformation in only one place"**
 
 # Test-Driven Data Transformation
 
-- At least `unique` and `not_null` tests, for every model
-  - How else to be confident that, a revision maintains existing functionality?
+- At least `unique` and `not_null` tests, always
+  - How else to defend, a revision maintains existing functionality?
 
 - Might write tests first, a la Test-Driven Development 
 
-- Broadly applicable practice, whether in dbt project or Jupyter notebook
+- Broadly applicable practice: in dbt project, Jupyter notebook, ...
 
 ---
 
@@ -223,11 +223,11 @@ class: inverse, center, middle
 
 # dbt Inspires More SWE in Analytics
 
-- dbt emphasizes _connection_ of data analytics, software engineering
+- dbt _connects_ data analytics, software engineering
 
 - This connection should revolutionize more of analytics!
 
-- Some examples I've been working on, follow --
+- Some examples I've been working on, follow--
 
 ---
 
@@ -246,7 +246,7 @@ cost of reaching baseline predictive model
 
 # model-flow: One Workflow for ML Feature Transforms 
 
-- **Solution: de-couple standard (a) operations, (b) project-specific configuration**
+- **Solution: de-couple (a) standard operations, (b) project-specific configuration**
 
 .center[![An ML system standardizes by de-coupling.](images/ml_systems_complexity_modular.png)]
 
@@ -260,7 +260,7 @@ SOURCE: [Hidden Technical Debt in Machine Learning Systems](https://proceedings.
   - "What data are used in this analysis?"
   - "What transformation steps yield model-ready data?"
 
-- Get model-ready data with a command line statement:
+- Get model-ready data with:
 
 .center[
 ```python -m src.features.main```
@@ -268,7 +268,7 @@ SOURCE: [Hidden Technical Debt in Machine Learning Systems](https://proceedings.
 
 - Transformed data could pass to many possible models
 
-- For more details, 
+- For more, 
   - My [blog](https://alextabraham.com/post/2023-08-10-improvingtimetomodelfeaturetransforms/)
   - My [GitHub repo](https://github.com/abrahamalex13/model-flow)
 
@@ -284,13 +284,13 @@ SOURCE: [Hidden Technical Debt in Machine Learning Systems](https://proceedings.
   - hard-to-scale,
   - inaccurate
 
-- With the internet, relevant data abound -- just needs wrangled!
+- With the internet, relevant data abound -- needs wrangled!
   
 - With our data and predictive models, we 
   - Save sellers time spent during listing process,
   - Inform buyers about fundamental value drivers (performance _and_ card details) 
 
-- We're building in public, [@SchoolhouseData](https://twitter.com/SchoolhouseData) 
+- We're [@SchoolhouseData](https://twitter.com/SchoolhouseData) 
 
 ---
 
