@@ -18,11 +18,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Data transformation: "a cohesive arc moving data from _source-conformed_ to _business-conformed_ " (`dbt` blog)
 
-- Data have idiosyncrasies, so transformations might adopt ad hoc designs
+- Data have idiosyncrasies -> transformations might adopt ad hoc designs
 
-  - Ad hoc designs are expensive: for maintenance, collaboration, ...
-  - 2x trouble if that design isn't your payload ("load that pays")
-  - Design standards cost upfront time, certainly
+- Ad hoc designs costly in maintenance, collaboration, ...
+  - Worse if that design isn't your payload ("load that pays")
 
 - Standards save cognitive load, for better uses!
 
